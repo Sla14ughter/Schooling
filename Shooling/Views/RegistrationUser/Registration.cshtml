@@ -1,57 +1,55 @@
-﻿@{
+﻿@model UserInfo
+@{
     ViewData["Title"] = "Registration";
 }
 <div class="form-wrapper">
-    <form action="reg.php" method="POST" id="regform">
+    <form asp-action="Registration" asp-controller="RegistrationUser">
         <div class="register">
-            <p>Фио:</p>
-            <input type="text"
-                   class="input"
-                   name="fio"
-                   id="fio"
-                   required
-                   pattern="^[А-Я][а-я]+ [А-Я][а-я]+ [А-Я][а-я]+$" />
+            <label asp-for="Lastname"></label>
+            <input asp-for="Lastname" />
+            <span asp-validation-for="Lastname"></span>
         </div>
         <div class="register">
-            <p>Логин:</p>
-            <input type="text"
-                   class="input"
-                   name="login"
-                   id="login"
-                   required
-                   pattern="^[a-zA-Z]*$"
-                   minlength="3"
-                   maxlength="16" />
+            <label asp-for="Firstname"></label>
+            <input asp-for="Firstname" />
+            <span asp-validation-for="Firstname"></span>
         </div>
         <div class="register">
-            <p>Email:</p>
-            <input type="Email" class="input" name="mail" id="mail" required />
+            <label asp-for="Patronymic"></label>
+            <input asp-for="Patronymic" />
+            <span asp-validation-for="Patronymic"></span>
         </div>
         <div class="register">
-            <p>Пароль:</p>
-            <input type="password"
-                   class="input"
-                   name="pass"
-                   id="pass"
-                   required />
+            <label asp-for="Email"></label>
+            <input asp-for="Email" />
+            <span asp-validation-for="Email"></span>
         </div>
         <div class="register">
-            <p>Повтор Пароля:</p>
-            <input type="password"
-                   class="input"
-                   name="ppass"
-                   id="ppass"
-                   required />
+            <label asp-for="PhoneNumber"></label>
+            <input asp-for="PhoneNumber" />
+            <span asp-validation-for="PhoneNumber"></span>
+        </div>
+        <div class="register">
+            <label asp-for="Login"></label>
+            <input asp-for="Login" />
+            <span asp-validation-for="Login"></span>
+        </div>
+        <div class="register">
+            <label asp-for="Password"></label>
+            <input asp-for="Password" />
+            <span asp-validation-for="Password"></span>
+        </div>
+        <div class="register">
+            <label asp-for="ConfirmPassword"></label>
+            <input asp-for="ConfirmPassword" />
+            <span asp-validation-for="ConfirmPassword"></span>
         </div>
         <div class="register tick">
-            <label for="galka" class="sogl">Согласие на обработку персональных данных:</label>
-            <input type="checkbox"
-                   class="check"
-                   name="galka"
-                   value="Yes"
-                   required />
+            <label asp-for="IsAgree"></label>
+            <input asp-for="IsAgree" />
+            <span asp-validation-for="IsAgree"></span>
         </div>
-        <button class="reg" name="registr" type="submit" id="regbtn">
+        <button class="reg" type="submit">
             Зарегистрировать
         </button>
     </form>
