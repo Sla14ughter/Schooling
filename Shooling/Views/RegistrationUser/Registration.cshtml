@@ -1,0 +1,59 @@
+﻿@{
+    ViewData["Title"] = "Registration";
+}
+<div class="form-wrapper">
+    <form action="reg.php" method="POST" id="regform">
+        <div class="register">
+            <p>Фио:</p>
+            <input type="text"
+                   class="input"
+                   name="fio"
+                   id="fio"
+                   required
+                   pattern="^[А-Я][а-я]+ [А-Я][а-я]+ [А-Я][а-я]+$" />
+        </div>
+        <div class="register">
+            <p>Логин:</p>
+            <input type="text"
+                   class="input"
+                   name="login"
+                   id="login"
+                   required
+                   pattern="^[a-zA-Z]*$"
+                   minlength="3"
+                   maxlength="16" />
+        </div>
+        <div class="register">
+            <p>Email:</p>
+            <input type="Email" class="input" name="mail" id="mail" required />
+        </div>
+        <div class="register">
+            <p>Пароль:</p>
+            <input type="password"
+                   class="input"
+                   name="pass"
+                   id="pass"
+                   required />
+        </div>
+        <div class="register">
+            <p>Повтор Пароля:</p>
+            <input type="password"
+                   class="input"
+                   name="ppass"
+                   id="ppass"
+                   required />
+        </div>
+        <div class="register tick">
+            <label for="galka" class="sogl">Согласие на обработку персональных данных:</label>
+            <input type="checkbox"
+                   class="check"
+                   name="galka"
+                   value="Yes"
+                   required />
+        </div>
+        <button class="reg" name="registr" type="submit" id="regbtn">
+            Зарегистрировать
+        </button>
+    </form>
+</div>
+
