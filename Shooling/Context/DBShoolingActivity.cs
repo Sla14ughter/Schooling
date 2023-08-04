@@ -5,7 +5,7 @@ namespace Shooling.Context
 {
     public class DbShoolingActivity: DbContext
     {
-        public DbSet<ShoolingActivity> ShoolingActivity { get; set; }
+        public DbSet<SchoolingActivity> ShoolingActivity { get; set; }
         public DbSet<UserInfo> UserInfo { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

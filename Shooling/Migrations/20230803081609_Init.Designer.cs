@@ -12,8 +12,8 @@ using Shooling.Context;
 namespace Shooling.Migrations
 {
     [DbContext(typeof(DbShoolingActivity))]
-    [Migration("20230801182924_UpdateUserModel")]
-    partial class UpdateUserModel
+    [Migration("20230803081609_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,7 +25,7 @@ namespace Shooling.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Shooling.Models.ShoolingActivity", b =>
+            modelBuilder.Entity("Shooling.Models.SchoolingActivity", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -78,9 +78,7 @@ namespace Shooling.Migrations
                         .HasColumnType("nvarchar(16)");
 
                     b.Property<string>("Password")
-                        .IsRequired()
-                        .HasMaxLength(16)
-                        .HasColumnType("nvarchar(16)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Patronymic")
                         .HasMaxLength(50)
@@ -91,7 +89,6 @@ namespace Shooling.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Salt")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -99,7 +96,7 @@ namespace Shooling.Migrations
                     b.ToTable("UserInfo");
                 });
 
-            modelBuilder.Entity("Shooling.Models.ShoolingActivity", b =>
+            modelBuilder.Entity("Shooling.Models.SchoolingActivity", b =>
                 {
                     b.HasOne("Shooling.Models.UserInfo", "User")
                         .WithMany()

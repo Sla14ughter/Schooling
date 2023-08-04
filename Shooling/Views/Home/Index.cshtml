@@ -1,8 +1,30 @@
-﻿@{
+﻿@model IEnumerable<SchoolingActivity>
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h1>Учебная деятельность</h1>
+<table class="bordered">
+    <thead>
+        <tr>
+            <th class="bordered">Дата и время начала</th>
+            <th class="bordered">Пользователь</th>
+            <th class="bordered">Достигнутый этап</th>
+            <th class="bordered">Дата и время окончания</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (SchoolingActivity item in Model)
+        {
+            <tr>
+                <td class="bordered">@item.StartTime</td>
+                <td class="bordered">@item.User.FullName</td>
+                <td class="bordered">@item.AchievedEtape</td>
+                <td class="bordered">@item.AchievedTime</td>
+                <td class="bordered"><a asp-controller="Home" asp-action="ActivityForm" asp-route-id="@item.Id">Обновить</a></td>
+                <td class="bordered"><a asp-controller="Home" asp-action="Index" asp-route-id="@item.Id">Удалить</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+

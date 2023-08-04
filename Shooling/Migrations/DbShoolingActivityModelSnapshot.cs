@@ -22,7 +22,7 @@ namespace Shooling.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Shooling.Models.ShoolingActivity", b =>
+            modelBuilder.Entity("Shooling.Models.SchoolingActivity", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -44,7 +44,7 @@ namespace Shooling.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("ShoolingActivity");
+                    b.ToTable("ShoolingActivity", (string)null);
                 });
 
             modelBuilder.Entity("Shooling.Models.UserInfo", b =>
@@ -75,9 +75,7 @@ namespace Shooling.Migrations
                         .HasColumnType("nvarchar(16)");
 
                     b.Property<string>("Password")
-                        .IsRequired()
-                        .HasMaxLength(16)
-                        .HasColumnType("nvarchar(16)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Patronymic")
                         .HasMaxLength(50)
@@ -88,15 +86,14 @@ namespace Shooling.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Salt")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("UserInfo");
+                    b.ToTable("UserInfo", (string)null);
                 });
 
-            modelBuilder.Entity("Shooling.Models.ShoolingActivity", b =>
+            modelBuilder.Entity("Shooling.Models.SchoolingActivity", b =>
                 {
                     b.HasOne("Shooling.Models.UserInfo", "User")
                         .WithMany()

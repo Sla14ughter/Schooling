@@ -17,9 +17,14 @@ namespace Shooling.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Lastname = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Firstname = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Patronymic = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Login = table.Column<string>(type: "nvarchar(16)", maxLength: 16, nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Salt = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
