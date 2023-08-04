@@ -47,14 +47,24 @@ namespace Shooling.Models
             RegularExpression(@"^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s])*$", ErrorMessage = "Неправильно введён пароль"),
             Compare(nameof(ConfirmPassword), ErrorMessage ="Пароли не совпадают"),
             MinLength(8),
-            StringLength(16)]
-        public string Password { get; set; }
+            StringLength(16),
+            NotMapped]
+        public string EnterPassword { get; set; }
         [Display(Name = "Подтвердите пароль"), NotMapped]
         public string ConfirmPassword { get; set; }
-        public string Salt { get; set; }
+        public string? Password { get; set; }
+        public string? Salt { get; set; }
         [Display(Name = "Согласен на обработку персональных данных"),
             NotMapped,
             Required]
         public bool IsAgree { get; set; }
+        [NotMapped]
+        public string FullName
+        {
+            get
+            {
+                return $"{Lastname} {Firstname} {Patronymic}";
+            }
+        }
     }
 }

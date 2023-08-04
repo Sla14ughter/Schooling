@@ -1,0 +1,42 @@
+﻿@model SchoolingActivityViewModel
+@{
+    ViewData["Title"] = "ActivityForm";
+}
+@{
+    // Отладочная информация: выведите содержимое Model.Users
+    var users = Model.Users as SelectList;
+    if (users != null)
+    {
+        foreach (var item in users)
+        {
+            <p>@item.Text: @item.Value</p>
+        }
+    }
+}
+<form asp-action="ActivityForm" asp-controller="Home" method="post">
+    <input asp-for="Activity.Id" type="hidden" />
+    <div class="register">
+        <label asp-for="Activity.StartTime"></label>
+        <input asp-for="Activity.StartTime" />
+        <span asp-validation-for="Activity.StartTime" class="text-danger"></span>
+    </div>
+    <div class="register">
+        <label asp-for="Activity.User"></label>
+        <select asp-for="SelectedUserId" asp-items="@Model.Users"></select>
+        <span asp-validation-for="Activity.User" class="text-danger"></span>
+    </div>
+    <div class="register">
+        <label asp-for="Activity.AchievedEtape"></label>
+        <input asp-for="Activity.AchievedEtape" />
+        <span asp-validation-for="Activity.AchievedEtape" class="text-danger"></span>
+    </div>
+    <div class="register">
+        <label asp-for="Activity.AchievedTime"></label>
+        <input asp-for="Activity.AchievedTime" />
+        <span asp-validation-for="Activity.AchievedTime" class="text-danger"></span>
+    </div>
+    <button class="reg" type="submit">
+        Сохранить
+    </button>
+</form>
+

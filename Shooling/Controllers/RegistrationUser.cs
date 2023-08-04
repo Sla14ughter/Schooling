@@ -1,11 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Shooling.Context;
 using Shooling.Models;
+using Shooling.Crypt;
 
 namespace Shooling.Controllers
 {
     public class RegistrationUser : Controller
     {
+        PasswordHasher passwordHasher;
+        public RegistrationUser()
+        {
+            passwordHasher = new PasswordHasher();
+        }
         [HttpGet]
         public IActionResult Registration()
         {
@@ -14,12 +20,14 @@ namespace Shooling.Controllers
         [HttpPost]
         public IActionResult Registration(UserInfo user)
         {
-            using (DbShoolingActivity db = new DbShoolingActivity())
+            if (ModelState.IsValid)
             {
-                if(ModelState.IsValid)
+                using (DbShoolingActivity db = new DbShoolingActivity())
                 {
-                    if(user != null && user.IsAgree)
+                    if (user.IsAgree)
                     {
+                        user.Salt = passwordHasher.NewSalt();
+                        user.Password = passwordHasher.GetHash(user.EnterPassword, user.Salt);
                         db.UserInfo.Add(user);
                         db.SaveChanges();
                         return View("Accept", user);
@@ -30,10 +38,10 @@ namespace Shooling.Controllers
                         return NotFound();
                     }
                 }
-                else
-                {
-                    return View(user);
-                }
+            }
+            else
+            {
+                return View(user);
             }
         }
     }
