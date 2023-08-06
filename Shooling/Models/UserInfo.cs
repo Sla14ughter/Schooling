@@ -30,19 +30,19 @@ namespace Shooling.Models
             RegularExpression(@"^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$", ErrorMessage = "Неправильно введен email")]
         public string Email { get; set; }
         [Display(Name = "Номер телефона"),
-            UIHint("Номер телефона"),
+            UIHint("Phone"),
             Required(ErrorMessage = "Введите номер телефона"),
             Phone]
         public string PhoneNumber { get; set; }
         [Display(Name = "Логин"),
             UIHint("Логин"),
             Required(ErrorMessage = "Введите логин"),
-            RegularExpression(@"^[a-zA-Z]*$", ErrorMessage = "Неправильно введен логин"),
+            RegularExpression(@"^(?=.*[a-zA-Z]{1,})(?=.*[\d]{0,})[a-zA-Z0-9]*$", ErrorMessage = "Неправильно введен логин"),
             StringLength(16),
             MinLength(3)]
         public string Login { get; set; }
         [Display(Name = "Пароль"),
-            UIHint("Пароль"),
+            UIHint("Password"),
             Required(ErrorMessage = "Введите пароль"),
             RegularExpression(@"^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s])*$", ErrorMessage = "Неправильно введён пароль"),
             Compare(nameof(ConfirmPassword), ErrorMessage ="Пароли не совпадают"),
@@ -50,7 +50,9 @@ namespace Shooling.Models
             StringLength(16),
             NotMapped]
         public string EnterPassword { get; set; }
-        [Display(Name = "Подтвердите пароль"), NotMapped]
+        [Display(Name = "Подтвердите пароль"), 
+            NotMapped,
+            UIHint("Password")]
         public string ConfirmPassword { get; set; }
         public string? Password { get; set; }
         public string? Salt { get; set; }

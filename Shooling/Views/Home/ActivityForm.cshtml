@@ -2,17 +2,6 @@
 @{
     ViewData["Title"] = "ActivityForm";
 }
-@{
-    // Отладочная информация: выведите содержимое Model.Users
-    var users = Model.Users as SelectList;
-    if (users != null)
-    {
-        foreach (var item in users)
-        {
-            <p>@item.Text: @item.Value</p>
-        }
-    }
-}
 <form asp-action="ActivityForm" asp-controller="Home" method="post">
     <input asp-for="Activity.Id" type="hidden" />
     <div class="register">

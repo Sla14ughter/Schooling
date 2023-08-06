@@ -9,7 +9,7 @@ namespace Shooling.Context
         public DbSet<UserInfo> UserInfo { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=DESKTOP-0EVUONT;Database=Shooling;Trusted_Connection=true;Encrypt=false");
+            optionsBuilder.UseSqlServer("Server=DESKTOP-0EVUONT;Database=Shooling;User Id=SchoolingUser;Password=bebra123; Encrypt=false;");
         }
     }
 }

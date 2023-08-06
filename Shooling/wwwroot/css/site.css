@@ -26,6 +26,17 @@ form {
     margin: auto;
 }
 
+    background: white;
+    position: relative;
+    display: flex;
+    grid-template: 100% / 50% 50%;
+    box-shadow: 2px 2px 10px 0 rgba(#333, 0.2);
+}
+
+.form-wrapper {
+    width: 90%;
+}
+
 select,
 input {
     width: 100%;
@@ -70,4 +81,8 @@ button {
 .bordered {
     border: 1px solid black;
     padding: 2px 10px;
+}
+
+.text-help {
+    font-size: 12px;
 }
