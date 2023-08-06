@@ -24,17 +24,24 @@
         <span asp-validation-for="Email" class="text-danger"></span>
     </div>
     <div class="register">
-        <label asp-for="PhoneNumber"></label>
+        <label asp-for="PhoneNumber"></label><br />
+        <span class="text-help">В формате +7 (XXX) XXX-XX-XX</span>
         <input asp-for="PhoneNumber" />
         <span asp-validation-for="PhoneNumber" class="text-danger"></span>
     </div>
     <div class="register">
-        <label asp-for="Login"></label>
+        <label asp-for="Login"></label><br />
+        <span class="text-help">3-16 латинских букв и цифр</span>
         <input asp-for="Login" />
         <span asp-validation-for="Login" class="text-danger"></span>
     </div>
     <div class="register">
-        <label asp-for="EnterPassword"></label>
+        <label asp-for="EnterPassword"></label><br />
+        <span class="text-help">
+            8-16 символов с использованием цифр, 
+            спец. символов, строчных и прописных 
+            символов латинского алфавита
+        </span>
         <input asp-for="EnterPassword" />
         <span asp-validation-for="EnterPassword" class="text-danger"></span>
     </div>
